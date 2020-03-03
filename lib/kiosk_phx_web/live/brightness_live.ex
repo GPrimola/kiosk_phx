@@ -15,7 +15,7 @@ defmodule KioskPhxWeb.BrightnessLive do
     socket =
       socket
       |> assign(%{
-        brightness: 255
+        brightness: KioskPhx.Backlight.brightness()
       })
 
     {:ok, socket}
@@ -23,7 +23,7 @@ defmodule KioskPhxWeb.BrightnessLive do
 
   def handle_event("update_brightness", %{"brightness" => brightness}, socket) do
     brightness = String.to_integer(brightness)
-
+    KioskPhx.Backlight.set_brightness(brightness)
     {:noreply, assign(socket, :brightness, brightness)}
   end
 end

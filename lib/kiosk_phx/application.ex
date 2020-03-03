@@ -9,9 +9,10 @@ defmodule KioskPhx.Application do
     # List all child processes to be supervised
     children = [
       # Start the endpoint when the application starts
-      KioskPhxWeb.Endpoint
+      KioskPhxWeb.Endpoint,
       # Starts a worker by calling: KioskPhx.Worker.start_link(arg)
       # {KioskPhx.Worker, arg},
+      KioskPhx.Backlight
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
